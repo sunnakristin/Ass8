@@ -6,6 +6,21 @@ public class Lending {
 
     private LocalDate duDate;
     private Book book;
+    private User user;
+
+    public Lending(Book book, User user) {
+        this.duDate = LocalDate.now().plusDays(30);
+        this.book = book;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public LocalDate getDuDate() {
         return duDate;
@@ -21,11 +36,6 @@ public class Lending {
 
     public void setBook(Book book) {
         this.book = book;
-    }
-
-    public Lending(Book book, User user) {
-        this.book = book;
-        this.duDate = LocalDate.now();
     }
 
 }

@@ -7,9 +7,13 @@ public class Book {
     private String title;
     private List<Author> authors;
 
-    public Book(String title, String authorName) {
+    public Book(String title, String authorName) throws EmptyAuthorListException {
         this.title = title;
-        this.authors = List.of(new Author(authorName));
+        try {
+            this.authors = List.of(new Author(authorName));
+        } catch (EmptyAuthorListException e) {
+            this.authors = List.of();
+        } // þurfum að laga þennan part
     }
 
     public Book(String title, List<Author> authors) {
