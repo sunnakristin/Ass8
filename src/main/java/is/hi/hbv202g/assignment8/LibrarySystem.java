@@ -21,8 +21,12 @@ public class LibrarySystem{
     }
 
     public void addBookWithTitleAndAuthorList(String title, List<Author> authors) throws EmptyAuthorListException {
-        Book book = new Book(title, authors);
-        books.add(book);
+        if(authors == null || authors.isEmpty()) {
+            throw new EmptyAuthorListException("Author list cannot be null or empty.");
+        } else {
+            Book book = new Book(title, authors);
+            books.add(book);
+        }
     }
 
     public void addStudentUser(String name, boolean feePaid) {
@@ -53,12 +57,19 @@ public class LibrarySystem{
         throw new UserOrBookDoesNotExistException("User with name " + name + " does not exist.");
     }
 
-    public void borrowBook(User user, Book book) {
+    public void borrowBook(User user, Book book) throws UserOrBookDoesNotExistException {
+        if (!users.contains(user)) {
+            throw new UserOrBookDoesNotExistException("User does not exist.");
+        }
+        if (!books.contains(book)) {
+            throw new UserOrBookDoesNotExistException("Book does not exist.");
+            
+        }
         Lending lending = new Lending(book, user);
         lendings.add(lending);
     }
 
-    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) {
+    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) throws UserOrBookDoesNotExistException {
         Lending lending = new Lending(book, facultyMember);
         lending.setDuDate(newDueDate);
     }
