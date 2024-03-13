@@ -22,11 +22,11 @@ public class Lending {
         this.user = user;
     }
 
-    public LocalDate getDuDate() {
+    public LocalDate getDueDate() {
         return duDate;
     }
 
-    public void setDuDate(LocalDate duDate) {
+    public void setDueDate(LocalDate duDate) {
         this.duDate = duDate;
     }
 
