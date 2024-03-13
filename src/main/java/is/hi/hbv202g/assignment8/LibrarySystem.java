@@ -65,7 +65,7 @@ public class LibrarySystem{
     public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) {
     
         Lending lending = new Lending(book, facultyMember);
-        lending.setDuDate(newDueDate);
+        lending.setDueDate(newDueDate);
     }
 
     public void returnBook(User user, Book book) {
