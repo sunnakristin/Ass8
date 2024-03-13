@@ -62,11 +62,15 @@ public class LibrarySystem{
         lendings.add(lending);
     }
 
-    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) {
-        Lending lending = new Lending(book, facultyMember);
-        lendings.remove(lending);
-        lending.setDueDate(newDueDate);
-        lendings.add(lending);
+    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) throws UserOrBookDoesNotExistException {
+        for (Lending lending : lendings) {
+            if (lending.getBook().equals(book) && lending.getUser().equals(facultyMember)) {
+                lending.setDueDate(newDueDate);
+                return;
+            }
+        }
+    
+        throw new UserOrBookDoesNotExistException("No lending found for the specified book and faculty member.");
     }
 
     public void returnBook(User user, Book book) throws UserOrBookDoesNotExistException {
