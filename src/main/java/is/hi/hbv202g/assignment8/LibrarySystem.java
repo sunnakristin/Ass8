@@ -15,12 +15,12 @@ public class LibrarySystem{
         this.lendings = List.of();
     }
 
-    public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) throws EmptyAuthorListException {
+    public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) {
         Book book = new Book(title, authorName);
         books.add(book);
     }
 
-    public void addBookWithTitleAndAuthorList(String title, List<Author> authors) {
+    public void addBookWithTitleAndAuthorList(String title, List<Author> authors) throws EmptyAuthorListException {
         Book book = new Book(title, authors);
         books.add(book);
     }
