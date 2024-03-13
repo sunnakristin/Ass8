@@ -10,9 +10,9 @@ public class LibrarySystem{
     private List<Lending> lendings;
 
     public LibrarySystem() {
-        this.books = List.of();
-        this.users = List.of();
-        this.lendings = List.of();
+        lendings = new java.util.ArrayList<>();
+        books = new java.util.ArrayList<>();
+        users = new java.util.ArrayList<>();
     }
 
     public void addBookWithTitleAndNameOfSingleAuthor(String title, String authorName) {
@@ -21,12 +21,11 @@ public class LibrarySystem{
     }
 
     public void addBookWithTitleAndAuthorList(String title, List<Author> authors) throws EmptyAuthorListException {
-        if(authors == null || authors.isEmpty()) {
-            throw new EmptyAuthorListException("Author list cannot be null or empty.");
-        } else {
+        if(authors.isEmpty()) {
+            throw new EmptyAuthorListException("Author list cannot be empty.");
+        }
             Book book = new Book(title, authors);
             books.add(book);
-        }
     }
 
     public void addStudentUser(String name, boolean feePaid) {
@@ -39,43 +38,32 @@ public class LibrarySystem{
         users.add(facultyMember);
     }
 
-    public Book findBookByTitle(String title) throws UserOrBookDoesNotExistException{
+    public Book findBookByTitle(String title) {
         for(int i = 0; i < books.size(); i++) {
             if(books.get(i).getTitle().equals(title)) {
                 return books.get(i);
             }
         }
-        throw new UserOrBookDoesNotExistException("Book with title " + title + " does not exist.");
+        return null;
     }
 
-    public User findUserByName(String name) throws UserOrBookDoesNotExistException {
+    public User findUserByName(String name){
         for(int i = 0; i < users.size(); i++) {
             if(users.get(i).getName().equals(name)) {
                 return users.get(i);
             }
         }
-        throw new UserOrBookDoesNotExistException("User with name " + name + " does not exist.");
+        return null;
     }
 
-    public void borrowBook(User user, Book book) throws UserOrBookDoesNotExistException {
-        if (!users.contains(user)) {
-            throw new UserOrBookDoesNotExistException("User does not exist.");
-        }
-        if (!books.contains(book)) {
-            throw new UserOrBookDoesNotExistException("Book does not exist.");
-            
-        }
+    public void borrowBook(User user, Book book) {
+    
         Lending lending = new Lending(book, user);
         lendings.add(lending);
     }
 
-    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) throws UserOrBookDoesNotExistException {
-        if(!users.contains(facultyMember)) {
-            throw new UserOrBookDoesNotExistException("User does not exist.");
-        }
-        if(!books.contains(book)) {
-            throw new UserOrBookDoesNotExistException("Book does not exist.");
-        }
+    public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) {
+    
         Lending lending = new Lending(book, facultyMember);
         lending.setDuDate(newDueDate);
     }
