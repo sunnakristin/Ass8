@@ -38,22 +38,22 @@ public class LibrarySystem{
         users.add(facultyMember);
     }
 
-    public Book findBookByTitle(String title) {
+    public Book findBookByTitle(String title) throws UserOrBookDoesNotExistException {
         for(int i = 0; i < books.size(); i++) {
             if(books.get(i).getTitle().equals(title)) {
                 return books.get(i);
             }
         }
-        return null;
+        throw new UserOrBookDoesNotExistException("Book does not exist.");
     }
 
-    public User findUserByName(String name){
+    public User findUserByName(String name) throws UserOrBookDoesNotExistException{
         for(int i = 0; i < users.size(); i++) {
             if(users.get(i).getName().equals(name)) {
                 return users.get(i);
             }
         }
-        return null;
+        throw new UserOrBookDoesNotExistException("User does not exist.");
     }
 
     public void borrowBook(User user, Book book) {
@@ -63,13 +63,17 @@ public class LibrarySystem{
     }
 
     public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) {
-    
         Lending lending = new Lending(book, facultyMember);
+        lendings.remove(lending);
         lending.setDueDate(newDueDate);
+        lendings.add(lending);
     }
 
-    public void returnBook(User user, Book book) {
+    public void returnBook(User user, Book book) throws UserOrBookDoesNotExistException {
         Lending lending = new Lending(book, user);
+        if(!lendings.contains(lending)){
+            throw new UserOrBookDoesNotExistException("Book has not been rented or was not borrowed by this user.");
+        }
         lendings.remove(lending);
     }
 }
