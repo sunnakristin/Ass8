@@ -35,22 +35,22 @@ public class LibrarySystem{
         users.add(facultyMember);
     }
 
-    public Book findBookByTitle(String title) {
+    public Book findBookByTitle(String title) throws UserOrBookDoesNotExistException{
         for(int i = 0; i < books.size(); i++) {
             if(books.get(i).getTitle().equals(title)) {
                 return books.get(i);
             }
         }
-        return null;
+        throw new UserOrBookDoesNotExistException("Book with title " + title + " does not exist.");
     }
 
-    public User findUserByName(String name) {
+    public User findUserByName(String name) throws UserOrBookDoesNotExistException {
         for(int i = 0; i < users.size(); i++) {
             if(users.get(i).getName().equals(name)) {
                 return users.get(i);
             }
         }
-        return null;
+        throw new UserOrBookDoesNotExistException("User with name " + name + " does not exist.");
     }
 
     public void borrowBook(User user, Book book) {
