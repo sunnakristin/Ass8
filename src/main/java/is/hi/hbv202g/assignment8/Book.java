@@ -8,12 +8,11 @@ public class Book {
     private List<Author> authors;
 
     public Book(String title, String authorName) throws EmptyAuthorListException {
+        if (authorName == null || authorName.isEmpty()) {
+            throw new EmptyAuthorListException("Author name cannot be null or empty.");
+        }
         this.title = title;
-        try {
-            this.authors = List.of(new Author(authorName));
-        } catch (EmptyAuthorListException e) {
-            this.authors = List.of();
-        } // þurfum að laga þennan part
+        this.authors = List.of(new Author(authorName));
     }
 
     public Book(String title, List<Author> authors) {

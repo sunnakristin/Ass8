@@ -5,7 +5,9 @@ package is.hi.hbv202g.assignment8;
  *
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EmptyAuthorListException {
         LibrarySystem myLibrarySystem = new LibrarySystem();
+        String a = null;
+        Book book = new Book("Homo Deus", a);
     }
 }
