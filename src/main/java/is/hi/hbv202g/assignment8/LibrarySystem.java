@@ -74,10 +74,18 @@ public class LibrarySystem{
     }
 
     public void returnBook(User user, Book book) throws UserOrBookDoesNotExistException {
-        Lending lending = new Lending(book, user);
-        if(!lendings.contains(lending)){
+        Lending matchingLending = null;
+        for (Lending lending : lendings) {
+            if (lending.getBook().equals(book) && lending.getUser().equals(user)) {
+                matchingLending = lending;
+                break;
+            }
+        }
+    
+        if (matchingLending != null) {
+            lendings.remove(matchingLending);
+        } else {
             throw new UserOrBookDoesNotExistException("Book has not been rented or was not borrowed by this user.");
         }
-        lendings.remove(lending);
     }
 }
