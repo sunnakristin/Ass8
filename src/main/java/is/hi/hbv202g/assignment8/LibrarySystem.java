@@ -70,6 +70,12 @@ public class LibrarySystem{
     }
 
     public void extendLending(FacultyMember facultyMember, Book book, LocalDate newDueDate) throws UserOrBookDoesNotExistException {
+        if(!users.contains(facultyMember)) {
+            throw new UserOrBookDoesNotExistException("User does not exist.");
+        }
+        if(!books.contains(book)) {
+            throw new UserOrBookDoesNotExistException("Book does not exist.");
+        }
         Lending lending = new Lending(book, facultyMember);
         lending.setDuDate(newDueDate);
     }
