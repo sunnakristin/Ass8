@@ -88,4 +88,16 @@ public class LibrarySystem{
             throw new UserOrBookDoesNotExistException("Book has not been rented or was not borrowed by this user.");
         }
     }
+
+    public List<Book> getBooks(){
+        return books;
+    }
+
+    public List<User> getUsers(){
+        return users;
+    }
+
+    public List<Lending> getLendings(){
+        return lendings;
+    }
 }

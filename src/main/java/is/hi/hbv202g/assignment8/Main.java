@@ -16,6 +16,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("litlar endur", "Sunna");
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("The road not taken", "Sævar");
+        librarySystem.addStudentUser("Sævar", true);
+        librarySystem.addStudentUser("Sunna", false);
 
         while(adSkoda){
             System.out.println("What would you like to do?");
