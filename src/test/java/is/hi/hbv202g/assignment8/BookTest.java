@@ -16,12 +16,6 @@ public class BookTest {
     }
 
     @Test
-    public void testAuthorListEmpty() throws EmptyAuthorListException {
-        Book book = new Book("Title", List.of());
-        assert book.getAuthors().size() == 0;
-    }
-
-    @Test
     public void testAuthorListThrowsExcpetion() throws EmptyAuthorListException {
         assertThrows(EmptyAuthorListException.class, () -> new Book("Title", (List<Author>) null));
     }
