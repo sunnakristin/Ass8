@@ -45,7 +45,7 @@ public class LibrarySystemTest {
     }
 
     @Test
-    public void findBookByTitleThrowsExceptionTest() throws UserOrBookDoesNotExistException { 
+    public void findBookByTitleThrowsExceptionTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
         assertThrows(UserOrBookDoesNotExistException.class, () -> librarySystem.findBookByTitle("Title2"));
@@ -74,17 +74,30 @@ public class LibrarySystemTest {
         assert librarySystem.getLendings().size() == 1;
     }
 
+    /**
+     * A method to test the extension of lending in the Library System.
+     *
+     * @throws UserOrBookDoesNotExistException if the user or book does not exist
+     */
     @Test
     public void extendLendingTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
         librarySystem.addFacultyMemberUser("NameOfFacultyMember", "Department");
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "NameOfAuthors");
-        librarySystem.borrowBook(librarySystem.findUserByName("NameOfFacultyMember"), librarySystem.findBookByTitle("Title"));
+        librarySystem.borrowBook(librarySystem.findUserByName("NameOfFacultyMember"),
+                librarySystem.findBookByTitle("Title"));
         LocalDate newDueDate = librarySystem.getLendings().get(0).getDueDate().plusDays(1);
-        librarySystem.extendLending((FacultyMember) librarySystem.findUserByName("NameOfFacultyMember"), librarySystem.findBookByTitle("Title"), newDueDate);
+        librarySystem.extendLending((FacultyMember) librarySystem.findUserByName("NameOfFacultyMember"),
+                librarySystem.findBookByTitle("Title"), newDueDate);
         assert librarySystem.getLendings().get(0).getDueDate().equals(newDueDate);
     }
 
+    /**
+     * A description of the entire Java function.
+     *
+     * @param paramName description of parameter
+     * @return description of return value
+     */
     @Test
     public void returnBookTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();

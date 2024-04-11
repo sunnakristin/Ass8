@@ -40,6 +40,6 @@ public class Book {
     }
 
     public void addAuthor(Author author) {
-        this.authors.add(author);
+        authors.add(author);
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Hello world!
+ * Main class
  *
  */
 public class Main {
@@ -19,7 +19,7 @@ public class Main {
         librarySystem.addStudentUser("Sævar", true);
         librarySystem.addStudentUser("Sunna", false);
 
-        while(adSkoda){
+        while (adSkoda) {
             System.out.println("What would you like to do?");
             System.out.println("1. Add book with title and author name");
             System.out.println("2. Add student user");
@@ -28,36 +28,36 @@ public class Main {
             System.err.println("5. Return book");
             System.out.println("6. Hætta að skoða");
             String input = scanner.nextLine();
-            if(input.equals("6")){
+            if (input.equals("6")) {
                 adSkoda = false;
             }
-            if(input.equals("1")){
+            if (input.equals("1")) {
                 System.out.println("Enter title: ");
                 String title = scanner.nextLine();
                 System.out.println("Enter author name: ");
                 String authorName = scanner.nextLine();
                 librarySystem.addBookWithTitleAndNameOfSingleAuthor(title, authorName);
             }
-            if(input.equals("2")){
+            if (input.equals("2")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 librarySystem.addStudentUser(name, false);
             }
-            if(input.equals("3")){
+            if (input.equals("3")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter department: ");
                 String department = scanner.nextLine();
                 librarySystem.addFacultyMemberUser(name, department);
             }
-            if(input.equals("4")){
+            if (input.equals("4")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter title: ");
                 String title = scanner.nextLine();
                 librarySystem.borrowBook(librarySystem.findUserByName(name), librarySystem.findBookByTitle(title));
             }
-            if(input.equals("5")){
+            if (input.equals("5")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter title: ");
@@ -66,6 +66,6 @@ public class Main {
             }
 
         }
-        
+
     }
 }
