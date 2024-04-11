@@ -8,6 +8,11 @@ import java.util.List;
 import org.junit.Test;
 
 public class LibrarySystemTest {
+    /**
+     * test add book with title and name of single author
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void addBookWithTitleAndNameOfSingleAuthorTest() {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -16,6 +21,11 @@ public class LibrarySystemTest {
         assert librarySystem.getBooks().size() == 2;
     }
 
+    /**
+     * test add book with title and more than one name of authors
+     * 
+     * @throws EmptyAuthorListException
+     */
     @Test
     public void addBookWithTitleAndAuthorListTest() throws EmptyAuthorListException {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -23,6 +33,9 @@ public class LibrarySystemTest {
         assert librarySystem.getBooks().size() == 1;
     }
 
+    /**
+     * test add student user
+     */
     @Test
     public void addStudentUserTest() {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -30,6 +43,9 @@ public class LibrarySystemTest {
         assert librarySystem.getUsers().size() == 1;
     }
 
+    /**
+     * test add faculty member
+     */
     @Test
     public void addFacultyMemberUserTest() {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -37,6 +53,11 @@ public class LibrarySystemTest {
         assert librarySystem.getUsers().size() == 1;
     }
 
+    /**
+     * test find book by title
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void findBookByTitleTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -44,6 +65,11 @@ public class LibrarySystemTest {
         assert librarySystem.findBookByTitle("Title").getTitle().equals("Title");
     }
 
+    /**
+     * test find book by title
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void findBookByTitleThrowsExceptionTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -51,6 +77,11 @@ public class LibrarySystemTest {
         assertThrows(UserOrBookDoesNotExistException.class, () -> librarySystem.findBookByTitle("Title2"));
     }
 
+    /**
+     * test find user by name
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void findUserByNameTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -58,6 +89,11 @@ public class LibrarySystemTest {
         assert librarySystem.findUserByName("Name").getName().equals("Name");
     }
 
+    /**
+     * test that find user by name throws exception if user does not exist
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void findUserByNameThrowsExceptionTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
@@ -65,6 +101,11 @@ public class LibrarySystemTest {
         assertThrows(UserOrBookDoesNotExistException.class, () -> librarySystem.findUserByName("Name2"));
     }
 
+    /**
+     * test borrow book
+     * 
+     * @throws UserOrBookDoesNotExistException
+     */
     @Test
     public void borrowBookTest() throws UserOrBookDoesNotExistException {
         LibrarySystem librarySystem = new LibrarySystem();
