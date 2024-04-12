@@ -12,12 +12,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws EmptyAuthorListException, UserOrBookDoesNotExistException {
         boolean adSkoda = true;
-        LibrarySystem librarySystem = new LibrarySystem();
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("litlar endur", "Sunna");
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("The road not taken", "Sævar");
-        librarySystem.addStudentUser("Sævar", true);
-        librarySystem.addStudentUser("Sunna", false);
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor("litlar endur", "Sunna");
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor("The road not taken", "Sævar");
+        LibrarySystem.getInstance().addStudentUser("Sævar", true);
+        LibrarySystem.getInstance().addStudentUser("Sunna", false);
 
         while (adSkoda) {
             System.out.println("What would you like to do?");
@@ -36,33 +35,35 @@ public class Main {
                 String title = scanner.nextLine();
                 System.out.println("Enter author name: ");
                 String authorName = scanner.nextLine();
-                librarySystem.addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+                LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
             }
             if (input.equals("2")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
-                librarySystem.addStudentUser(name, false);
+                LibrarySystem.getInstance().addStudentUser(name, false);
             }
             if (input.equals("3")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter department: ");
                 String department = scanner.nextLine();
-                librarySystem.addFacultyMemberUser(name, department);
+                LibrarySystem.getInstance().addFacultyMemberUser(name, department);
             }
             if (input.equals("4")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter title: ");
                 String title = scanner.nextLine();
-                librarySystem.borrowBook(librarySystem.findUserByName(name), librarySystem.findBookByTitle(title));
+                LibrarySystem.getInstance().borrowBook(LibrarySystem.getInstance().findUserByName(name),
+                        LibrarySystem.getInstance().findBookByTitle(title));
             }
             if (input.equals("5")) {
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter title: ");
                 String title = scanner.nextLine();
-                librarySystem.returnBook(librarySystem.findUserByName(name), librarySystem.findBookByTitle(title));
+                LibrarySystem.getInstance().returnBook(LibrarySystem.getInstance().findUserByName(name),
+                        LibrarySystem.getInstance().findBookByTitle(title));
             }
 
         }

@@ -5,6 +5,8 @@ import java.util.List;
 
 public class LibrarySystem {
 
+    private static LibrarySystem instance;
+
     // fields
     private List<Book> books;
     private List<User> users;
@@ -12,11 +14,25 @@ public class LibrarySystem {
 
     /**
      * Constructor
+     * 
+     * vil breyta í private
      */
-    public LibrarySystem() {
+    private LibrarySystem() {
         lendings = new java.util.ArrayList<>();
         books = new java.util.ArrayList<>();
         users = new java.util.ArrayList<>();
+    }
+
+    /**
+     * Get instance of the library system
+     * 
+     * @return
+     */
+    public static LibrarySystem getInstance() {
+        if (instance == null) {
+            instance = new LibrarySystem();
+        }
+        return instance;
     }
 
     /**

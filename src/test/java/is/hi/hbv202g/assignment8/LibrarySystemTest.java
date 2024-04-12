@@ -3,11 +3,35 @@ package is.hi.hbv202g.assignment8;
 import static org.junit.Assert.assertThrows;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class LibrarySystemTest {
+
+    private Book book1;
+    private Book book2;
+    private Author author1;
+    private Author author2;
+    private Author author3;
+    private List<Author> authors;
+    private List<Author> authorsEmpty;
+
+    @Before
+    public void setUp() throws Exception {
+        author1 = new Author("Author1");
+        author2 = new Author("Author2");
+        author3 = new Author("Author3");
+        book1 = new Book("Title1", author1.getName());
+        book2 = new Book("Title2", author2.getName());
+        authors = List.of(author1, author2);
+        authorsEmpty = new ArrayList<>();
+        LocalDate date = LocalDate.now();
+        LocalDate newDate = date.plusDays(30);
+    }
+
     /**
      * test add book with title and name of single author
      * 
@@ -15,7 +39,6 @@ public class LibrarySystemTest {
      */
     @Test
     public void addBookWithTitleAndNameOfSingleAuthorTest() {
-        LibrarySystem librarySystem = new LibrarySystem();
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
         librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
         assert librarySystem.getBooks().size() == 2;
