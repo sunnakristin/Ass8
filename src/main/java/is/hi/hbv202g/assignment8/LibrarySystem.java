@@ -36,6 +36,16 @@ public class LibrarySystem {
     }
 
     /**
+     * Resets the system by clearing the list of lendings, books, and users.
+     *
+     */
+    public void resetSystem() {
+        lendings.clear();
+        books.clear();
+        users.clear();
+    }
+
+    /**
      * Add book with title and name of single author
      * 
      * @param title      title of the book

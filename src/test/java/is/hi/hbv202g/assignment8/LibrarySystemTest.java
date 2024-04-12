@@ -1,35 +1,25 @@
 package is.hi.hbv202g.assignment8;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class LibrarySystemTest {
-
-    private Book book1;
-    private Book book2;
-    private Author author1;
-    private Author author2;
-    private Author author3;
-    private List<Author> authors;
-    private List<Author> authorsEmpty;
+    private String studentName;
+    private String title;
+    private String authorName;
 
     @Before
     public void setUp() throws Exception {
-        author1 = new Author("Author1");
-        author2 = new Author("Author2");
-        author3 = new Author("Author3");
-        book1 = new Book("Title1", author1.getName());
-        book2 = new Book("Title2", author2.getName());
-        authors = List.of(author1, author2);
-        authorsEmpty = new ArrayList<>();
-        LocalDate date = LocalDate.now();
-        LocalDate newDate = date.plusDays(30);
+        studentName = "StudentName";
+        authorName = "AuthorName";
+        title = "Title";
+        LibrarySystem.getInstance().resetSystem();
     }
 
     /**
@@ -39,9 +29,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void addBookWithTitleAndNameOfSingleAuthorTest() {
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        assert librarySystem.getBooks().size() == 2;
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        assert LibrarySystem.getInstance().getBooks().size() == 1;
     }
 
     /**
@@ -51,9 +40,9 @@ public class LibrarySystemTest {
      */
     @Test
     public void addBookWithTitleAndAuthorListTest() throws EmptyAuthorListException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addBookWithTitleAndAuthorList("Title", List.of(new Author("Author1"), new Author("Author2")));
-        assert librarySystem.getBooks().size() == 1;
+        LibrarySystem.getInstance().addBookWithTitleAndAuthorList(title,
+                List.of(new Author(authorName), new Author("Author2")));
+        assertEquals(1, LibrarySystem.getInstance().getBooks().size());
     }
 
     /**
@@ -61,9 +50,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void addStudentUserTest() {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addStudentUser("Name", true);
-        assert librarySystem.getUsers().size() == 1;
+        LibrarySystem.getInstance().addStudentUser(studentName, true);
+        assertEquals(1, LibrarySystem.getInstance().getUsers().size());
     }
 
     /**
@@ -71,9 +59,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void addFacultyMemberUserTest() {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addFacultyMemberUser("Name", "Department");
-        assert librarySystem.getUsers().size() == 1;
+        LibrarySystem.getInstance().addFacultyMemberUser("Name", "Department");
+        assertEquals(1, LibrarySystem.getInstance().getUsers().size());
     }
 
     /**
@@ -83,9 +70,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void findBookByTitleTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        assert librarySystem.findBookByTitle("Title").getTitle().equals("Title");
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        assert LibrarySystem.getInstance().findBookByTitle(title).getTitle().equals(title);
     }
 
     /**
@@ -95,9 +81,9 @@ public class LibrarySystemTest {
      */
     @Test
     public void findBookByTitleThrowsExceptionTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        assertThrows(UserOrBookDoesNotExistException.class, () -> librarySystem.findBookByTitle("Title2"));
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        assertThrows(UserOrBookDoesNotExistException.class,
+                () -> LibrarySystem.getInstance().findBookByTitle("Title2"));
     }
 
     /**
@@ -107,9 +93,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void findUserByNameTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addStudentUser("Name", true);
-        assert librarySystem.findUserByName("Name").getName().equals("Name");
+        LibrarySystem.getInstance().addStudentUser(studentName, true);
+        assert LibrarySystem.getInstance().findUserByName(studentName).getName().equals(studentName);
     }
 
     /**
@@ -119,9 +104,8 @@ public class LibrarySystemTest {
      */
     @Test
     public void findUserByNameThrowsExceptionTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addStudentUser("Name", true);
-        assertThrows(UserOrBookDoesNotExistException.class, () -> librarySystem.findUserByName("Name2"));
+        LibrarySystem.getInstance().addStudentUser(studentName, true);
+        assertThrows(UserOrBookDoesNotExistException.class, () -> LibrarySystem.getInstance().findUserByName("Name2"));
     }
 
     /**
@@ -131,11 +115,11 @@ public class LibrarySystemTest {
      */
     @Test
     public void borrowBookTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addStudentUser("Name", true);
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        librarySystem.borrowBook(librarySystem.findUserByName("Name"), librarySystem.findBookByTitle("Title"));
-        assert librarySystem.getLendings().size() == 1;
+        LibrarySystem.getInstance().addStudentUser(studentName, true);
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        LibrarySystem.getInstance().borrowBook(LibrarySystem.getInstance().findUserByName(studentName),
+                LibrarySystem.getInstance().findBookByTitle(title));
+        assert LibrarySystem.getInstance().getLendings().size() == 1;
     }
 
     /**
@@ -145,15 +129,17 @@ public class LibrarySystemTest {
      */
     @Test
     public void extendLendingTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addFacultyMemberUser("NameOfFacultyMember", "Department");
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "NameOfAuthors");
-        librarySystem.borrowBook(librarySystem.findUserByName("NameOfFacultyMember"),
-                librarySystem.findBookByTitle("Title"));
-        LocalDate newDueDate = librarySystem.getLendings().get(0).getDueDate().plusDays(1);
-        librarySystem.extendLending((FacultyMember) librarySystem.findUserByName("NameOfFacultyMember"),
-                librarySystem.findBookByTitle("Title"), newDueDate);
-        assert librarySystem.getLendings().get(0).getDueDate().equals(newDueDate);
+        String facultyMember = "NameOfFacultyMember";
+        LibrarySystem.getInstance().addFacultyMemberUser(facultyMember, "Department");
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        LibrarySystem.getInstance().borrowBook(LibrarySystem.getInstance().findUserByName(facultyMember),
+                LibrarySystem.getInstance().findBookByTitle(title));
+        LocalDate newDueDate = LibrarySystem.getInstance().getLendings().get(0).getDueDate().plusDays(1);
+        LibrarySystem.getInstance().extendLending(
+                (FacultyMember) LibrarySystem.getInstance().findUserByName(facultyMember),
+                LibrarySystem.getInstance().findBookByTitle(title), newDueDate);
+        assertEquals(newDueDate, LibrarySystem.getInstance().getLendings().get(0).getDueDate());
+        ;
     }
 
     /**
@@ -164,11 +150,12 @@ public class LibrarySystemTest {
      */
     @Test
     public void returnBookTest() throws UserOrBookDoesNotExistException {
-        LibrarySystem librarySystem = new LibrarySystem();
-        librarySystem.addStudentUser("Name", true);
-        librarySystem.addBookWithTitleAndNameOfSingleAuthor("Title", "Name");
-        librarySystem.borrowBook(librarySystem.findUserByName("Name"), librarySystem.findBookByTitle("Title"));
-        librarySystem.returnBook(librarySystem.findUserByName("Name"), librarySystem.findBookByTitle("Title"));
-        assert librarySystem.getLendings().size() == 0;
+        LibrarySystem.getInstance().addStudentUser(studentName, true);
+        LibrarySystem.getInstance().addBookWithTitleAndNameOfSingleAuthor(title, authorName);
+        LibrarySystem.getInstance().borrowBook(LibrarySystem.getInstance().findUserByName(studentName),
+                LibrarySystem.getInstance().findBookByTitle(title));
+        LibrarySystem.getInstance().returnBook(LibrarySystem.getInstance().findUserByName(studentName),
+                LibrarySystem.getInstance().findBookByTitle(title));
+        assertEquals(0, LibrarySystem.getInstance().getLendings().size());
     }
 }
