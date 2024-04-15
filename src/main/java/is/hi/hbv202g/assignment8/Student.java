@@ -2,7 +2,7 @@ package is.hi.hbv202g.assignment8;
 
 public class Student extends User {
 
-    // fields
+    // instance variables
     private boolean feePaid;
 
     /**

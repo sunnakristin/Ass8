@@ -10,10 +10,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class LibrarySystemTest {
+
+    // instance variables
     private String studentName;
     private String title;
     private String authorName;
 
+    /**
+     * Set up the test environment before each test case.
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         studentName = "StudentName";

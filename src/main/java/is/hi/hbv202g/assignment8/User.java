@@ -2,7 +2,7 @@ package is.hi.hbv202g.assignment8;
 
 public abstract class User {
 
-    // fields
+    // instance variables
     private String name;
 
     /**

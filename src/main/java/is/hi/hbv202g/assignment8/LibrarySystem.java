@@ -7,15 +7,13 @@ public class LibrarySystem {
 
     private static LibrarySystem instance;
 
-    // fields
+    // instance variables
     private List<Book> books;
     private List<User> users;
     private List<Lending> lendings;
 
     /**
      * Constructor
-     * 
-     * vil breyta í private
      */
     private LibrarySystem() {
         lendings = new java.util.ArrayList<>();

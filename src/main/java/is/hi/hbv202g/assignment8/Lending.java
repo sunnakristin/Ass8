@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Lending {
 
-    // fields
+    // instance variables
     private LocalDate duDate;
     private Book book;
     private User user;

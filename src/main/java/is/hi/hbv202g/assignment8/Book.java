@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Book {
 
-    // fields
+    // instance variables
     private String title;
     private List<Author> authors;
 
