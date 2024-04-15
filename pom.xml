@@ -9,11 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>HBV202G Assignment8</name>
-    <description>A Maven project skeleton. The provided Maven POM sets the Java version to 17.</description>
+    <description>Project skeleton to be used for Assignment8 in course HBV202G Software Design and Construction</description>
+    <url>https://github.com/sunnakristin/Ass8.git</url>
     <licenses>
         <license>
-            <name>MIT</name>
-            <url>https://github.com/sunnakristin/Ass8.git</url>
+            <name>LICENSE</name>
+            <url>https://spdx.org/licenses/MIT.html</url>
         </license>
     </licenses>
     <organization>
