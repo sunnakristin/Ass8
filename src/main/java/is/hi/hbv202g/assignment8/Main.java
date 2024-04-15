@@ -25,7 +25,7 @@ public class Main {
             System.out.println("3. Add faculty member user");
             System.out.println("4. Borrow book");
             System.err.println("5. Return book");
-            System.out.println("6. Hætta að skoða");
+            System.out.println("6. Exit");
             String input = scanner.nextLine();
             if (input.equals("6")) {
                 adSkoda = false;
