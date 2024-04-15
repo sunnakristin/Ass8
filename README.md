@@ -1,10 +1,5 @@
 # HBV202G Assignment8
-A Maven project skeleton. The provided Maven POM sets the Java version to 17.
-
-All classes need to be located in the Java package `is.hi.hbv202g.assignment8`.
-
-Class and method names of the submitted solution need to be **exactly** the same 
-as in the UML class diagram in the assignment PDF. 
+This project develops a comprehensive library management system designed to facilitate the efficient handling of library resources and user interactions. The system uses the Singleton design pattern for the librarySystem class to ensure that there is only one instance of the system throughout the application. This design choice is crucial for maintaining a coherent and consistent state across the entire library system with no duplicate entities or conflicting states. The system caters to different user roles, namely students and faculty members, and supports operations such as book lending and returns.
 
 # Implementation
 Both the implementation and the tests are in the Java package `is.hi.hbv202g.assignment8`, 
