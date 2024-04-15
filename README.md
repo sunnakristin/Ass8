@@ -1,4 +1,4 @@
-# HBV202GAssignment8
+# HBV202G Assignment8
 A Maven project skeleton. The provided Maven POM sets the Java version to 17.
 
 All classes need to be located in Java package `is.hi.hbv202g.assignment8`.
@@ -6,11 +6,6 @@ All classes need to be located in Java package `is.hi.hbv202g.assignment8`.
 Class and method names of the submitted solution need to be **exactly** the same 
 as in the UML class diagram in the assignment PDF. 
 
-If you like, you can import from project directory `UML` the file 
-`library_system.uxf` into the online UML editor https://www.umletino.com/ 
-and copy/paste from there class and method names: click on a class and then, 
-you can copy from the `properties` window on the right hand side class 
-and method names.
 
 # Implemantion
 Both the implementation and the tests are in Java package `is.hi.hbv202g.assignment8`, 
@@ -36,7 +31,17 @@ but in the usual separate Maven `src` directories:
   - `MainTest.java`: A skeleton for a class containing JUnit4 test cases for the `Main` class.
   - `StudentTest.java`: A skeleton for a class containing JUnit4 test cases for the `Student` class.
 
+# Run the program
 
+## Maven
+- `mvn compile` compiles all implementation classes.
+- `mvn exec:java` executes the main method of the implementation.
+- `mvn test` runs all test cases (i.e. all classes with a name that either starts with `Test` or ends with `Test`, `Tests`, or `TestCase`).
 
-# Run program with jar
-java -jar target/Assignment8-1.0-SNAPSHOT-jar-with-dependencies.jar
+## Jar
+- `java -jar target/Assignment8-1.0-SNAPSHOT-jar-with-dependencies.jar` executes the main method of the implementation.
+
+# License
+MIT license: [License](LICENSE)
+
+UML: [UML](src/site/markdown/uml.md)
