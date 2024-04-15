@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>HBV202G Assignment8</name>
+    <description>A Maven project skeleton. The provided Maven POM sets the Java version to 17.</description>
     <licenses>
         <license>
             <name>MIT</name>
