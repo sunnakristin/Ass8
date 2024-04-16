@@ -37,8 +37,11 @@ Open your terminal and type `bash` to switch to the Bash shell if it's not alrea
 - `./package.sh` creates a fat jar file.
 - `./run.sh` executes the main method of the implementation.
 
-# License
-MIT license: [License](LICENSE)
+# Generating the Project Site
+- `mvn site` generates the project's website documentation and makes it viewable.
 
 # Design
 UML: [UML](src/site/markdown/uml.md)
+
+# License
+MIT license: [License](LICENSE)
