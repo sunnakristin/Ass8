@@ -38,4 +38,5 @@ but in the usual separate Maven `src` directories:
 # License
 MIT license: [License](LICENSE)
 
+# Design
 UML: [UML](src/site/markdown/uml.md)
