@@ -33,6 +33,8 @@ but in the usual separate Maven `src` directories:
 - `mvn test` runs all test cases.
 
 ## Jar
+Open your terminal and type `bash` to switch to the Bash shell if it's not already the default.
+
 - `./package.sh` creates a fat jar file.
 - `./run.sh` executes the main method of the implementation.
 
