@@ -22,7 +22,6 @@ but in the usual separate Maven `src` directories:
   - `BookTest.java`: A skeleton for a class containing JUnit4 test cases for the `Book` class.
   - `LendingTest.java`: A skeleton for a class containing JUnit4 test cases for the `Lending` class.
   - `LibrarySystemTest.java`: A skeleton for a class containing JUnit4 test cases for the `LibrarySystem` class.
-  - `MainTest.java`: A skeleton for a class containing JUnit4 test cases for the `Main` class.
   - `StudentTest.java`: A skeleton for a class containing JUnit4 test cases for the `Student` class.
 
 # Run the Program
