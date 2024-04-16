@@ -1,1 +1,1 @@
-![UML](<UML.ass8.png>)
+![UML](<UML.LokaVerkefni.png>)
