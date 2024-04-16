@@ -33,7 +33,7 @@ but in the usual separate Maven `src` directories:
 - `mvn test` runs all test cases.
 
 ## Jar
-- `java -jar target/Assignment8-1.0-SNAPSHOT-jar-with-dependencies.jar` executes the main method of the implementation.
+- `java -jar target/Lokaverkefni-hbv202g-1.0-SNAPSHOT-jar-with-dependencies.jar` executes the main method of the implementation.
 
 # License
 MIT license: [License](LICENSE)
