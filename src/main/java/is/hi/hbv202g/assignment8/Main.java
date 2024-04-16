@@ -1,8 +1,6 @@
 package is.hi.hbv202g.assignment8;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -67,6 +65,6 @@ public class Main {
             }
 
         }
-
+        scanner.close();
     }
 }

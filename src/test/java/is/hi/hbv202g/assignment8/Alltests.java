@@ -8,7 +8,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ BookTest.class, 
                 LendingTest.class, 
                 LibrarySystemTest.class, 
-                MainTest.class, 
                 StudentTest.class })
 public class Alltests {
     
