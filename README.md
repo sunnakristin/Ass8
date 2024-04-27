@@ -45,3 +45,10 @@ UML: [UML](src/site/markdown/uml.md)
 
 # License
 MIT license: [License](LICENSE)
+
+# Design
+ 
+ UML: [UML](src/site/markdown/uml.md)
+
+## Design Pattern
+This project implements the Singleton design pattern, ensuring that only one instance of the Library System is created. As demonstrated in the `LibrarySystem.java class`, a `private static LibrarySystem instance` is defined. Whenever the system needs to access items from the Library System, it utilizes `LibrarySystem.getInstance()`.
